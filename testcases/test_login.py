@@ -77,9 +77,10 @@ class Test_001_Login:
         time.sleep(3)
         self.lp=Loginpage(self.driver)
         time.sleep(2)
-        element = self.driver.find_element(By.XPATH("//*[@id='lock']/div/div/form/div/div/div/div/div[2]/div[2]/span/div/div/div/div/div/div/div/div/div/div[3]/p[2]/a")).get_attribute("Forgot Password?")
-        if element:
-            return True
-        else:
-            return False
-
+        self.lp.clickForgot()
+        act_title = self.driver.title
+        if act_title == "Log in to Revinate":
+            self.lp.setUsername(self.username)
+            time.sleep(3)
+            self.lp.submitforgot()
+            time.sleep(3)
