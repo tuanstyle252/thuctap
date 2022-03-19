@@ -11,7 +11,7 @@ from utilites import ExcelUtils
 
 class Test_002_ddl_Login:
     baseUrl = ReadConfig.getApplicationURL()
-    path = ".//TestData/Testdata.xlsx"
+    path = "E:/thuctap/TestData/Testdata.xlsx"
     logger = LogGen.loggen()
 
     def test_002_ddl_login(self, setup):
@@ -44,34 +44,32 @@ class Test_002_ddl_Login:
                     self.logger.info("***************pased")
                     self.lp.clickMyacount()
                     time.sleep(4)
-                    self.lp.clickLogout();
+                    self.lp.clickLogout()
+                    time.sleep(5)
                     lst_status.append("Pass")
 
-                elif self.exp=="Fail":
-                    self.logger.info("*************** failed")
+                elif self.exp == "Fail":
+                    self.logger.info("*************** fail")
                     self.lp.clickMyacount()
                     time.sleep(4)
-                    self.lp.clickLogout();
-                    lst_status.append("Failed")
+                    self.lp.clickLogout()
+                    time.sleep(5)
+                    lst_status.append("Fail")
             elif act_title != exp_title:
                 if self.exp == "Pass":
-                    self.logger.info("*************** failed")
-                    self.lp.clickMyacount()
+                    self.logger.info("*************** fail")
                     time.sleep(4)
-                    self.lp.clickLogout();
                     lst_status.append("fail")
                 elif self.exp == "Fail":
                     self.logger.info("*************** pass")
-                    self.lp.clickMyacount()
                     time.sleep(4)
-                    self.lp.clickLogout();
                     lst_status.append("pass")
         if "Fail" not in lst_status:
             self.logger.info("*********** login ddl test Pass ****")
             self.driver.close()
             assert True
         else:
-            self.logger.info("*********** login ddl test Failed ****")
+            self.logger.info("*********** login ddl test Fail ****")
             self.driver.close()
             assert False
         self.logger.info("***************end of login ddt test **********")

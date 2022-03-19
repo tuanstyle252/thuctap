@@ -1,12 +1,14 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 
 
 @pytest.fixture()
 def setup():
-    option = Options()
-    driver = webdriver.Chrome(chrome_options=option, executable_path="C:/Users/TranInc/PycharmProjects/automation/drivers/chromedriver.exe")
+    ser = Service("E:/thuctap/drivers/chromedriver.exe")
+    op = webdriver.ChromeOptions()
+    driver = webdriver.Chrome(service=ser, options=op)
     return driver
 
 ########### pytest HTML Report ################

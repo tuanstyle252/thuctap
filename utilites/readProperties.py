@@ -1,7 +1,8 @@
 import configparser
 
 config = configparser.RawConfigParser()
-config.read(".\\Configuration\\config.ini")
+configFilePath = 'E:/thuctap/Configuration/config.ini'
+config.read(configFilePath)
 
 
 class ReadConfig:
